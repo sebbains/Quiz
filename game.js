@@ -4,6 +4,8 @@ const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBar = document.querySelector('#progressBar');
 const progressBarFull = document.querySelector('#progressBarFull');
+const loader = document.querySelector('#loader');
+const game = document.querySelector('#game');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -35,7 +37,7 @@ fetch(apiUrl)
                 formattedQuestion[`choice${index + 1}`] = answer;
             })
             return formattedQuestion;
-        });
+        }); 
         startGame();
     })
     .catch(err => {
@@ -48,8 +50,10 @@ const startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
-
     getNewQuestion();
+    // hide loader & show game
+    loader.classList.add('hidden');
+    game.classList.remove('hidden');
 }
 
 const getNewQuestion = () => {
@@ -64,11 +68,11 @@ const getNewQuestion = () => {
     // get question
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
-    question.innerText = currentQuestion.question;
+    question.innerHTML = currentQuestion.question;
     // get choices
     choices.forEach(choice => {
         const number = choice.dataset["number"];
-        choice.innerText = currentQuestion[`choice${number}`];
+        choice.innerHTML = currentQuestion[`choice${number}`];
     })
     // update remaining questions
     availableQuestions.splice(questionIndex,1);
