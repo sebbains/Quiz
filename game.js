@@ -15,8 +15,10 @@ let availableQuestions = [];
 let questions = [];
 
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
-const apiUrl = "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple";
+const MAX_QUESTIONS = 5;
+
+const selectedCategory = location.search.substring(1);
+const apiUrl = `https://opentdb.com/api.php?amount=5&category=${selectedCategory}&difficulty=easy&type=multiple`;
 
 fetch(apiUrl)
     .then(res => {

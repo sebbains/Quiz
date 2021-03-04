@@ -61,6 +61,11 @@ h3 {
   flex-direction: column;
 }
 
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .flex-center {
   justify-content: center;
   align-items: center;
@@ -79,7 +84,6 @@ h3 {
 }
 
 /* buttons */
-
 .btn {
   font-size: 1.8rem;
   padding: 1rem 0;
@@ -97,6 +101,10 @@ h3 {
   box-shadow: 0 0.4rem 1.4rem 0 rgba(85, 185, 235, 0.5);
   transform: translateY(-0.1rem);
   transition: transform 150ms;
+}
+
+.btn.category {
+  margin: 1rem;
 }
 
 /* forms*/
